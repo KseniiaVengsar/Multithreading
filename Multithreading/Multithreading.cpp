@@ -8,8 +8,8 @@
 
 std::mutex mtx; 
 
-int client = 0;  // Счетчик клиентов
-const int maxClients = 10;  // Макс кол клиентов
+int client = 0;  // РЎС‡РµС‚С‡РёРє РєР»РёРµРЅС‚РѕРІ
+const int maxClients = 10;  // РњР°РєСЃ РєРѕР» РєР»РёРµРЅС‚РѕРІ
 
 void clientTh() {
     while (true) {
@@ -19,7 +19,7 @@ void clientTh() {
             std::lock_guard<std::mutex> lock(mtx);
             if (client < maxClients) {
                 ++client;
-                std::cout << "Клиент пришел. Всего клиентов: " << client << std::endl;
+                std::cout << "РљР»РёРµРЅС‚ РїСЂРёС€РµР». Р’СЃРµРіРѕ РєР»РёРµРЅС‚РѕРІ: " << client << std::endl;
             }
         }
     }
@@ -32,7 +32,7 @@ void operatorTh() {
             std::lock_guard<std::mutex> lock(mtx);
             if (client > 0) {
                 --client;
-                std::cout << "Операционист обслужил клиента. Всего клиентов: " << client << std::endl;
+                std::cout << "РћРїРµСЂР°С†РёРѕРЅРёСЃС‚ РѕР±СЃР»СѓР¶РёР» РєР»РёРµРЅС‚Р°. Р’СЃРµРіРѕ РєР»РёРµРЅС‚РѕРІ: " << client << std::endl;
             }
         }
     }
